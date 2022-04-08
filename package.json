@@ -1,0 +1,44 @@
+{
+  "name": "backreinventoryx",
+  "version": "1.0.0",
+  "description": "backend of proyect reInventoryX",
+  "main": "index.js",
+  "scripts": {
+    "babel-node": "babel-node --presets=@babel/preset-env",
+    "dev": "nodemon app.js",
+    "devbabel": "nodemon --exec npm run babel-node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel-node app.js --exec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GiovanniAS/backReInventoryX.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GiovanniAS/backReInventoryX/issues"
+  },
+  "homepage": "https://github.com/GiovanniAS/backReInventoryX#readme",
+  "dependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.5",
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.16.11",
+    "bcrypt": "^5.0.1",
+    "connect-history-api-fallback": "^1.6.0",
+    "cors": "^2.8.5",
+    "cowsay2": "^2.0.4",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.6",
+    "mongoose-unique-validator": "^3.0.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.5",
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.16.11"
+  }
+}
