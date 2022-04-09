@@ -12,15 +12,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GiovanniAS/backReInventoryX.git"
+    "url": "git+https://github.com/GiovanniAS/back-re-inventory-x.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "GiovanniAS",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/GiovanniAS/backReInventoryX/issues"
+    "url": "https://github.com/GiovanniAS/back-re-inventory-x/issues"
   },
-  "homepage": "https://github.com/GiovanniAS/backReInventoryX#readme",
+  "homepage": "https://github.com/GiovanniAS/back-re-inventory-x#readme",
   "dependencies": {
     "@babel/cli": "^7.17.6",
     "@babel/core": "^7.17.5",

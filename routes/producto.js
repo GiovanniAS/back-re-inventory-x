@@ -19,6 +19,7 @@ router.post('/nuevo-producto', async(req, res) =>{
     }
 })
 
+//Producto con id
 router.get('/producto/:id', async(req, res) =>{
     const _id = req.params.id
     try{
@@ -32,6 +33,7 @@ router.get('/producto/:id', async(req, res) =>{
     }
 })
 
+//Todos los productos
 router.get('/producto', async(req, res) =>{
     try{
         const productoDB = await Producto.find()
