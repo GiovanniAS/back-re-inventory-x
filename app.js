@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 import path from 'path';
 import mongoose from 'mongoose';
+require('dotenv').config()
 
 
 const app = express()
@@ -39,8 +40,9 @@ app.use(history())
 app.use(express.static(path.join(__dirname, 'public')))
 
 
-app.set('puerto', process.env.PORT || 3005)
+//app.set('puerto', process.env.PORT)
+const PUERTO = process.env.PORT
 
-app.listen(app.get('puerto'), () =>{
-    console.log('Ejemplo del servidor Puerto'+ app.get('puerto'))
+app.listen(PUERTO, () =>{
+    console.log('Ejemplo del servidor Puerto '+ PUERTO)
 })
