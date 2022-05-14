@@ -1,37 +1,61 @@
-import express from 'express';
-import morgan from 'morgan';
-import cors from 'cors';
-import path from 'path';
-import mongoose from 'mongoose';
+
+const bodyparser = require('body-parser')
+const express = require('express')
+const morgan = require('morgan')
+const cors = require('cors')
+const path = require('path')
+const mongoose = require('mongoose')
 require('dotenv').config()
 
-
-const app = express()
-const uri = 'mongodb://localhost:27017/reInventory'
+//configuracion de rutas
+const authRoutes = require('./routes/auth')
+const dashboardRoutes = require('./routes/dashboard')
+const verifytoken = require('./routes/validate-token')
 const options = {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-    //useCreateIndex: true
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 }
+const corsOptions = {
+  origin: "*",
+  optionsSuccessStatus: 200
+}
+//servidor
+const app = express()
 
-mongoose.connect(uri, options).then(
+//conexion
+const uri = `mongodb+srv://${process.env.USERNAMEM}:${process.env.PASSWORD}@cluster0.zpjsu.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`
+const PUERTO = process.env.PORT || 3005
+
+mongoose.connect(uri, options)
+  .then(() => console.log('Conexion exitosa'))
+  .catch(e => console.log('Error DB: ' + e))
+
+/* mongoose.connect(uri, options).then(
     () =>{
         console.log('conectado a DB')
     },
     err =>{ err }
-)
+) */
 
+app.use(bodyparser.urlencoded({extended: false}))
+app.use(bodyparser.json())
 app.use(morgan('tiny'))
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 
 // Rutas del Back
-app.get('/', (req, res) => {
-    res.send('Hola Mundo!!!')
-})
+app.get('/', (req, res) =>{
 
+    res.json({
+      estado: true,
+      mensaje: 'Funcionando!!!'
+    })
+  })
+
+app.use('/api/user', authRoutes)
+app.use('/api/dashboard', verifytoken, dashboardRoutes)
 app.use('/apiProducto', require('./routes/producto'))
 
 // Middleware para Vue router mode history
@@ -41,8 +65,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 
 //app.set('puerto', process.env.PORT)
-const PUERTO = process.env.PORT
 
 app.listen(PUERTO, () =>{
-    console.log('Ejemplo del servidor Puerto '+ PUERTO)
-})
+    console.log(`Servidor Trabajando en el puerto: ${PUERTO}`)
+  })
