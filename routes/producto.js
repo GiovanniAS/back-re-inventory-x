@@ -1,8 +1,9 @@
-import express from "express";
+
+const express = require('express')
 const router = express.Router()
 
 //importamos el modelo de los productos que creamos
-import Producto from '../models/producto'
+const Producto = require('../models/producto')
 
 //Agregar un nuevo producto usamos POST
 router.post('/nuevo-producto', async(req, res) =>{

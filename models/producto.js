@@ -1,4 +1,5 @@
-import mongoose from 'mongoose'
+
+const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const productoSchema = new Schema({
@@ -9,6 +10,4 @@ const productoSchema = new Schema({
 	activo: {type: Boolean, default: true}
 })
 
-const Producto = mongoose.model('Producto', productoSchema)
-
-export default Producto
+module.exports = mongoose.model('Producto', productoSchema)
