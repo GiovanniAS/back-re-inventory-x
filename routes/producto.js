@@ -20,7 +20,7 @@ router.post('/nuevo-producto', async(req, res) =>{
     }
 })
 
-//Producto con id
+//buscar Producto con id
 router.get('/producto/:id', async(req, res) =>{
     const _id = req.params.id
     try{
@@ -29,6 +29,48 @@ router.get('/producto/:id', async(req, res) =>{
     }catch (error){
         return res.status(400).json({
             mensaje: "No se encontro el producto con es ID",
+            error
+        })
+    }
+})
+
+//buscar Producto con categoria computers
+router.get('/productocom', async(req, res) =>{
+    //const _id = req.params.id
+    try{
+        const productoDB = await Producto.find({categoria: "computers"})
+        res.json(productoDB)
+    }catch (error){
+        return res.status(400).json({
+            mensaje: "No se encontraron productos",
+            error
+        })
+    }
+})
+
+//buscar Producto con categoria phones
+router.get('/productophone', async(req, res) =>{
+    //const _id = req.params.id
+    try{
+        const productoDB = await Producto.find({categoria: "phones"})
+        res.json(productoDB)
+    }catch (error){
+        return res.status(400).json({
+            mensaje: "No se encontraron productos",
+            error
+        })
+    }
+})
+
+//buscar Producto con categoria accesories
+router.get('/productoacc', async(req, res) =>{
+    //const _id = req.params.id
+    try{
+        const productoDB = await Producto.find({categoria: "accesories"})
+        res.json(productoDB)
+    }catch (error){
+        return res.status(400).json({
+            mensaje: "No se encontraron productos",
             error
         })
     }
